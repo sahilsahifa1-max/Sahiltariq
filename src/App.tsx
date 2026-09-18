@@ -23,27 +23,30 @@ export const App: React.FC = () => {
       className="relative w-full min-h-screen bg-[#0C0C0C] text-[#D7E2EA] font-sans selection:bg-[#7621B0] selection:text-white"
       style={{ overflowX: 'clip' }}
     >
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION (Semantic Header) */}
       <HeroSection
         heroPortraitUrl="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
         onContactClick={() => setIsContactOpen(true)}
         onNavigate={handleNavigate}
       />
 
-      {/* 2. MARQUEE SECTION */}
-      <MarqueeSection />
+      {/* Semantic Main landmark containing portfolio sections */}
+      <main className="w-full">
+        {/* 2. MARQUEE SECTION */}
+        <MarqueeSection />
 
-      {/* 3. ABOUT SECTION */}
-      <AboutSection onContactClick={() => setIsContactOpen(true)} />
+        {/* 3. ABOUT SECTION */}
+        <AboutSection onContactClick={() => setIsContactOpen(true)} />
 
-      {/* 4. SERVICES SECTION */}
-      <ServicesSection />
+        {/* 4. SERVICES SECTION */}
+        <ServicesSection />
 
-      {/* 5. PROJECTS SECTION */}
-      <ProjectsSection />
+        {/* 5. PROJECTS SECTION */}
+        <ProjectsSection />
 
-      {/* 6. WHAT CLIENTS ARE SAYING SECTION */}
-      <TestimonialsSection />
+        {/* 6. WHAT CLIENTS ARE SAYING SECTION */}
+        <TestimonialsSection />
+      </main>
 
       {/* FOOTER */}
       <Footer

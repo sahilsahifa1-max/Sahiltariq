@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sahiltariq02.netlify.app/sitemap.xml

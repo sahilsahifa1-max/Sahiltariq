@@ -42,7 +42,10 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, index })
         >
           <img
             src={testimonial.image}
-            alt={testimonial.name}
+            alt={`${testimonial.name} - ${testimonial.role}`}
+            width="80"
+            height="80"
+            decoding="async"
             loading="lazy"
             className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />

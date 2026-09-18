@@ -90,8 +90,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
             >
               <img
                 src={project.images.leftTop}
-                alt={`${project.name} Screenshot 1`}
+                alt={`${project.name} - Detailed 3D scene preview by Sahil Tariq`}
                 loading="lazy"
+                decoding="async"
+                width="400"
+                height="230"
                 className="w-full h-full object-cover rounded-[24px] sm:rounded-[36px] md:rounded-[44px] hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -103,8 +106,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
             >
               <img
                 src={project.images.leftBottom}
-                alt={`${project.name} Screenshot 2`}
+                alt={`${project.name} - UI and visual asset showcase by Sahil Tariq`}
                 loading="lazy"
+                decoding="async"
+                width="400"
+                height="340"
                 className="w-full h-full object-cover rounded-[28px] sm:rounded-[40px] md:rounded-[50px] hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -114,8 +120,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
           <div className="md:col-span-7 rounded-[32px] sm:rounded-[45px] md:rounded-[60px] overflow-hidden bg-[#16161a] border border-white/10 min-h-[220px] sm:min-h-[300px] md:h-full">
             <img
               src={project.images.rightMain}
-              alt={`${project.name} Main Showcase Screenshot`}
+              alt={`${project.name} - Primary project composition by Sahil Tariq`}
               loading="lazy"
+              decoding="async"
+              width="600"
+              height="600"
               className="w-full h-full object-cover rounded-[32px] sm:rounded-[45px] md:rounded-[60px] hover:scale-105 transition-transform duration-500"
             />
           </div>

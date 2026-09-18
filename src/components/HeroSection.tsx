@@ -25,9 +25,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   ];
 
   return (
-    <section className="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C] select-none">
+    <header className="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C] select-none">
       {/* 1. Navbar */}
       <motion.nav
+        aria-label="Main Navigation"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
@@ -112,7 +113,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   {/* Portrait Image (Original Jack portrait) */}
                   <img
                     src={heroPortraitUrl}
-                    alt="Sahil Tariq - 3D Creator and Web Designer"
+                    alt="Sahil Tariq — 3D creator and web designer"
+                    width="500"
+                    height="667"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-full h-full object-cover object-center rounded-t-[36px] sm:rounded-t-[48px] lg:rounded-t-[60px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] filter brightness-95 contrast-105"
                     loading="eager"
                   />
@@ -149,6 +154,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <ContactButton onClick={onContactClick} />
         </motion.div>
       </div>
-    </section>
+    </header>
   );
 };

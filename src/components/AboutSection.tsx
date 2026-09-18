@@ -10,7 +10,7 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) => {
   const aboutText =
-    "I'm Sahil Tariq, a creative 3D creator, web designer, and developer focused on building modern digital experiences. I enjoy combining clean UI, immersive 3D visuals, smooth animations, and thoughtful user experiences to create websites and digital projects that stand out. I'm constantly learning, experimenting, and turning ideas into interactive experiences. Let's build something incredible together!";
+    "Sahil Tariq is a 3D creator and web designer focused on creating striking digital experiences, 3D visuals, websites, motion design and modern visual identities. Combining clean UI, immersive 3D elements, smooth animations, and thoughtful user experiences to create digital projects that truly stand out. Constantly learning, experimenting, and turning bold ideas into interactive reality.";
 
   return (
     <section
@@ -22,7 +22,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         <FadeIn delay={0.1} x={-80} y={0} duration={0.9}>
           <img
             src={decorativeImages.topLeftMoon}
-            alt="Decorative 3D Moon"
+            alt=""
+            aria-hidden="true"
+            width="210"
+            height="210"
+            decoding="async"
             className="w-[120px] sm:w-[160px] md:w-[210px] h-auto drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)] object-contain"
             loading="lazy"
           />
@@ -34,7 +38,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         <FadeIn delay={0.15} x={80} y={0} duration={0.9}>
           <img
             src={decorativeImages.topRightLego}
-            alt="Decorative 3D Lego"
+            alt=""
+            aria-hidden="true"
+            width="210"
+            height="210"
+            decoding="async"
             className="w-[120px] sm:w-[160px] md:w-[210px] h-auto drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)] object-contain"
             loading="lazy"
           />
@@ -46,7 +54,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         <FadeIn delay={0.25} x={-80} y={0} duration={0.9}>
           <img
             src={decorativeImages.bottomLeftObject}
-            alt="Decorative 3D Shape"
+            alt=""
+            aria-hidden="true"
+            width="180"
+            height="180"
+            decoding="async"
             className="w-[100px] sm:w-[140px] md:w-[180px] h-auto drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)] object-contain"
             loading="lazy"
           />
@@ -58,7 +70,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         <FadeIn delay={0.3} x={80} y={0} duration={0.9}>
           <img
             src={decorativeImages.bottomRightGroup}
-            alt="Decorative 3D Geometric Group"
+            alt=""
+            aria-hidden="true"
+            width="220"
+            height="220"
+            decoding="async"
             className="w-[130px] sm:w-[170px] md:w-[220px] h-auto drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)] object-contain"
             loading="lazy"
           />
