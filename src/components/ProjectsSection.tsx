@@ -11,30 +11,45 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+
+  // We track the scroll progress of this specific card container
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: cardContainerRef,
     offset: ['start end', 'start start'],
   });
 
-  // Calculate target scale according to prompt requirement:
-  // targetScale = 1 - (totalCards - 1 - index) * 0.03
+  // Scale down earlier cards subtly as they get stacked under later cards
+  // targetScale: Card 01 -> 0.94, Card 02 -> 0.97, Card 03 -> 1
   const targetScale = 1 - (totalCards - 1 - index) * 0.03;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
+  // Stacking z-index: Project 01 -> 10, Project 02 -> 20, Project 03 -> 30
+  const zIndex = (index + 1) * 10;
+
+  // Staggered sticky top offsets so each card's header or full card stacks neatly
+  // e.g., index 0 at 5rem, index 1 at 6rem, index 2 at 7rem
+  const stickyTop = `calc(4.5rem + ${index * 24}px)`;
+
   return (
     <div
-      ref={containerRef}
-      className="relative min-h-[75vh] md:h-[85vh] flex items-start justify-center w-full"
+      ref={cardContainerRef}
+      className="relative w-full flex items-start justify-center"
+      style={{
+        // Give each card container generous height so the scroll-driven stacking travels smoothly
+        minHeight: '85vh',
+        marginBottom: index === totalCards - 1 ? '4rem' : '8rem',
+      }}
     >
       <motion.div
         style={{
           scale,
-          top: `calc(${index * 24}px + 4.5rem)`,
+          top: stickyTop,
+          zIndex,
         }}
-        className="sticky w-full max-w-full rounded-[30px] sm:rounded-[45px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden"
+        className="sticky w-full max-w-full rounded-[32px] sm:rounded-[48px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden"
       >
-        {/* Top Row */}
+        {/* Top Row: Number, category, name, Live Project button */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
             {/* Number */}
@@ -53,18 +68,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
             </h3>
           </div>
 
-          {/* "Live Project" Ghost Button */}
+          {/* "Live Project" Button */}
           <div className="flex-shrink-0">
             <LiveProjectButton href={project.liveUrl || "#"} />
           </div>
         </div>
 
-        {/* Project Description excerpt */}
+        {/* Project Description */}
         <p className="text-xs sm:text-sm text-[#D7E2EA]/70 font-light max-w-2xl mt-4 mb-4 line-clamp-2">
           {project.description}
         </p>
 
-        {/* Bottom Row: Two-Column Image Grid */}
+        {/* Image Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-5 mt-2">
           {/* Left Column: 40% (md:col-span-5) - 2 stacked images */}
           <div className="md:col-span-5 flex flex-col gap-3 sm:gap-4 md:gap-5">
@@ -114,7 +129,7 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 pb-32"
+      className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-4 sm:px-8 md:px-10 pt-20 sm:pt-24 pb-20"
     >
       <div className="max-w-6xl mx-auto w-full">
         {/* Section Heading */}
@@ -127,8 +142,8 @@ export const ProjectsSection: React.FC = () => {
           </h2>
         </FadeIn>
 
-        {/* 3 Sticky Stacking Cards */}
-        <div className="relative flex flex-col gap-16 sm:gap-24">
+        {/* 3 True Vertical Sticky Stacking Cards */}
+        <div className="relative w-full flex flex-col">
           {projectsData.map((project, index) => (
             <ProjectCard
               key={project.id}

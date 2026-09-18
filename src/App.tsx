@@ -4,6 +4,7 @@ import { MarqueeSection } from './components/MarqueeSection';
 import { AboutSection } from './components/AboutSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProjectsSection } from './components/ProjectsSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 
@@ -40,6 +41,9 @@ export const App: React.FC = () => {
 
       {/* 5. PROJECTS SECTION */}
       <ProjectsSection />
+
+      {/* 6. WHAT CLIENTS ARE SAYING SECTION */}
+      <TestimonialsSection />
 
       {/* FOOTER */}
       <Footer
