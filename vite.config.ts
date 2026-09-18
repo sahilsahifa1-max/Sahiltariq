@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { viteSingleFile } from 'vite-plugin-singlefile';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react(), viteSingleFile()],
+  plugins: [react()],
   build: {
-    outDir: path.resolve(__dirname, 'app/src/main/assets/web'),
+    outDir: process.env.OUT_DIR || 'dist',
     emptyOutDir: true,
     target: 'es2020',
   },

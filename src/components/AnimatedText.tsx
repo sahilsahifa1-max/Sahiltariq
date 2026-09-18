@@ -36,7 +36,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
   });
 
   const characters = text.split('');
-  const totalChars = characters.length;
+  const totalChars = Math.max(characters.length, 1);
 
   return (
     <p
@@ -45,7 +45,9 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
     >
       {characters.map((char, index) => {
         const start = index / totalChars;
-        const end = Math.min(1, (index + 1) / totalChars + 0.05);
+        const rawEnd = (index + 1) / totalChars + 0.05;
+        // Ensure start < end and end <= 1 to avoid non-monotonic ranges
+        const end = Math.min(1, Math.max(start + 0.001, rawEnd));
         return (
           <Character
             key={index}
