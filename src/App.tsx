@@ -42,7 +42,10 @@ export const App: React.FC = () => {
       <ProjectsSection />
 
       {/* FOOTER */}
-      <Footer onContactClick={() => setIsContactOpen(true)} />
+      <Footer
+        onContactClick={() => setIsContactOpen(true)}
+        onNavigate={handleNavigate}
+      />
 
       {/* CONTACT MODAL */}
       <ContactModal

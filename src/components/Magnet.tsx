@@ -88,16 +88,16 @@ export const Magnet: React.FC<MagnetProps> = ({
   }, []);
 
   useEffect(() => {
+    // Only bind mouse move for pointer devices that support hover (prevents touch scroll interference)
+    const isHoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isHoverCapable) return;
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [handleMouseMove, handleTouchMove, handleTouchEnd]);
+  }, [handleMouseMove]);
 
   return (
     <div

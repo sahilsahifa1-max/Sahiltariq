@@ -25,14 +25,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
   return (
     <div
       ref={containerRef}
-      className="relative h-[85vh] flex items-start justify-center"
+      className="relative min-h-[75vh] md:h-[85vh] flex items-start justify-center w-full"
     >
       <motion.div
         style={{
           scale,
-          top: `calc(${index * 28}px + 6rem)`,
+          top: `calc(${index * 24}px + 4.5rem)`,
         }}
-        className="sticky w-full rounded-[36px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden"
+        className="sticky w-full max-w-full rounded-[30px] sm:rounded-[45px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden"
       >
         {/* Top Row */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
