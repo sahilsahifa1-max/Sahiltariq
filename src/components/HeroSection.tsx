@@ -12,8 +12,8 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onContactClick,
   onNavigate,
-  // Easily replaceable portrait image path for Sahil Tariq
-  heroPortraitUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+  // Original Jack portrait image from portfolio specification
+  heroPortraitUrl = "https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png",
 }) => {
   const navLinks = [
     { label: "About", target: "about" },
