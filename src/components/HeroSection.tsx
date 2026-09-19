@@ -34,43 +34,72 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         className="w-full flex items-center justify-between px-4 sm:px-8 md:px-12 pt-6 sm:pt-7 md:pt-8 z-30 flex-shrink-0"
       >
-        {navLinks.map((link) => {
-          const isActive = activeSection === link.target;
-          return (
-            <motion.button
-              key={link.label}
-              type="button"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: link.delay,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => {
-                setActiveSection(link.target);
-                if (link.target === "contact") {
-                  onContactClick();
-                } else {
-                  onNavigate(link.target);
-                }
-              }}
-              className="group relative py-1 px-1.5 sm:px-2 text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] transition-colors duration-200 hover:text-white cursor-pointer"
-            >
-              <span className="relative z-10 transition-colors duration-200 group-hover:text-white">
-                {link.label}
-              </span>
-              {/* Elegant hover & active indicator underline */}
-              <span
-                className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#BBCCD7] transition-all duration-300 ease-out ${
-                  isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-80'
-                }`}
-              />
-            </motion.button>
-          );
-        })}
+        {/* Jack Portrait Logo Icon */}
+        <motion.button
+          type="button"
+          onClick={() => {
+            setActiveSection("");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          className="group relative flex-shrink-0 cursor-pointer rounded-full p-0.5 border border-[#D7E2EA]/30 bg-[#16161a] transition-all duration-300 hover:border-[#7621B0]/80 shadow-[0_0_12px_rgba(118,33,176,0.25)] hover:shadow-[0_0_20px_rgba(118,33,176,0.5)] focus:outline-none"
+          aria-label="Scroll to top"
+        >
+          <div className="w-[34px] h-[34px] sm:w-[36px] sm:h-[36px] md:w-[40px] md:h-[40px] rounded-full overflow-hidden">
+            <img
+              src={heroPortraitUrl}
+              alt="Sahil Tariq 3D Creator portrait"
+              width="40"
+              height="40"
+              className="w-full h-full object-cover object-center rounded-full transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        </motion.button>
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.target;
+            return (
+              <motion.button
+                key={link.label}
+                type="button"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: link.delay,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  setActiveSection(link.target);
+                  if (link.target === "contact") {
+                    onContactClick();
+                  } else {
+                    onNavigate(link.target);
+                  }
+                }}
+                className="group relative py-1 px-1.5 sm:px-2 text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-[1.25rem] transition-colors duration-200 hover:text-white cursor-pointer"
+              >
+                <span className="relative z-10 transition-colors duration-200 group-hover:text-white">
+                  {link.label}
+                </span>
+                {/* Elegant hover & active indicator underline */}
+                <span
+                  className={`absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#BBCCD7] transition-all duration-300 ease-out ${
+                    isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-80'
+                  }`}
+                />
+              </motion.button>
+            );
+          })}
+        </div>
       </motion.nav>
 
       {/* 2. Hero Middle Area (Contains Heading + Portrait on all viewports) */}
